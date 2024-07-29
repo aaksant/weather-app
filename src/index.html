@@ -21,10 +21,10 @@
               <input type="text" name="city" id="city" placeholder="Search" />
             </form>
           </div>
-          <button class="user-temp btn">Celcius</button>
+          <button class="current-temp-metric btn">Celcius</button>
         </div>
       </header>
-      <main class="main">
+      <main class="main-container hidden">
         <section class="location">
           <div class="location-container">
             <span class="city"></span>
@@ -34,16 +34,12 @@
         <section class="forecast">
           <div class="forecast-left">
             <section class="main-info">
-              <!-- <img
-                src="../src/assets/icons/clear-day.svg"
-                alt=""
-                class="icon"
-              /> -->
-              <span class="condition">Clear </span>
+              <img alt="" class="icon" />
+              <span class="condition"></span>
             </section>
             <section class="details">
               <div class="temp-container">
-                <span class="temp">30℃</span>
+                <span class="real-temp"></span>
                 <div class="btn-temp-container">
                   <button class="btn-temp btn real">Real</button>
                   <button class="btn-temp btn min">Min</button>
@@ -53,15 +49,15 @@
               <div class="other-container">
                 <div class="other-item">
                   <span class="label">Humidity</span>
-                  <span class="value">50</span>
+                  <span class="value humidity"></span>
                 </div>
                 <div class="other-item">
                   <span class="label">Wind speed</span>
-                  <span class="value">15.2</span>
+                  <span class="value wind-speed"></span>
                 </div>
                 <div class="other-item">
                   <span class="label">UV Index</span
-                  ><span class="value">9</span>
+                  ><span class="value uv-index"></span>
                 </div>
               </div>
             </section>
