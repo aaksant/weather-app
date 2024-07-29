@@ -21,7 +21,7 @@
               <input type="text" name="city" id="city" placeholder="Search" />
             </form>
           </div>
-          <button class="current-temp-metric btn">Celcius</button>
+          <button class="temp-unit btn">Fahrenheit</button>
         </div>
       </header>
       <main class="main-container hidden">
@@ -41,9 +41,9 @@
               <div class="temp-container">
                 <span class="real-temp"></span>
                 <div class="btn-temp-container">
-                  <button class="btn-temp btn real">Real</button>
-                  <button class="btn-temp btn min">Min</button>
-                  <button class="btn-temp btn max">Max</button>
+                  <button data-temp-type="temp" class="btn">Real</button>
+                  <button data-temp-type="tempmin" class="btn">Min</button>
+                  <button data-temp-type="tempmax" class="btn">Max</button>
                 </div>
               </div>
               <div class="other-container">
