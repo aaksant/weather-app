@@ -1,0 +1,160 @@
+:root {
+  box-sizing: border-box;
+}
+
+::before,
+::after,
+* {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding: 0;
+  margin: 0 2rem;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-rows: 75px 1fr;
+  height: 100vh;
+}
+
+.header {
+  grid-row: 1 / 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-right {
+  display: flex;
+  gap: 16px;
+}
+
+#form input#city {
+  padding: 8px;
+  outline: none;
+  border: 1px solid rgb(209, 213, 219);
+  border-radius: 0.5rem;
+}
+
+.main {
+  grid-row: 2 / -1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.location-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.location-container .city {
+  font-size: 3rem;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+  text-transform: uppercase;
+}
+
+.forecast {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+
+.forecast-left {
+  grid-column: 1 / 2;
+}
+
+.main-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.condition {
+  font-size: 2rem;
+}
+
+.icon {
+  width: 108px;
+  height: 108px;
+}
+
+.details {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.temp-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.temp {
+  font-size: 5rem;
+}
+
+.btn {
+  background-color: transparent;
+  border: 1px solid rgb(209, 213, 219);
+  border-radius: 0.5rem;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background-color: #f3f4f6;
+}
+
+.btn-temp.min:hover {
+  background-color: #bae6fd;
+}
+
+.btn-temp.max:hover {
+  background-color: #fecaca;
+}
+
+.other-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+}
+
+.other-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.other-item .label {
+  flex: 1;
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+.other-item .value {
+  padding: 10px;
+  text-align: right;
+  font-size: 1rem;
+  font-weight: bolder;
+  color: #0066cc;
+}
+
+.forecast-right {
+  grid-column: 2 / -1;
+}
