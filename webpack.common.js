@@ -6,7 +6,7 @@ module.exports = {
     index: './src/index.js'
   },
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true
   },
@@ -33,7 +33,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        loader: 'svg-inline-loader'
+        type: 'asset/inline'
       }
     ]
   },
