@@ -27,11 +27,6 @@ export default class UI {
     this.updateUI();
   }
 
-  setTemperatureType(type) {
-    this.currentTempType = type;
-    this.updateUI();
-  }
-
   loadIcon(data) {
     const icon = document.querySelector('.icon');
     const iconName = data.forecast.icon;
@@ -50,10 +45,10 @@ export default class UI {
     const mainContainer = document.querySelector('.main-container');
     const city = document.querySelector('.city');
     const condition = document.querySelector('.condition');
-    const realTemp = document.querySelector('.real-temp');
-    const humidity = document.querySelector('.humidity');
-    const windSpeed = document.querySelector('.wind-speed');
-    const uvIndex = document.querySelector('.uv-index');
+    const temp = document.querySelector('.temp');
+    const humidity = document.querySelector('.humidity + .value');
+    const windSpeed = document.querySelector('.wind-speed + .value');
+    const uvIndex = document.querySelector('.uv-index + .value');
 
     const currentTempUnit = document.querySelector('.temp-unit');
     const tempValue = +convertTemperature(
@@ -67,7 +62,7 @@ export default class UI {
 
     city.textContent = todayData.city;
     condition.textContent = todayData.forecast.conditions;
-    realTemp.textContent = `${tempValue.toFixed(2)}°${unit}`;
+    temp.textContent = `${Math.round(tempValue)}°${unit}`;
     humidity.textContent = todayData.forecast.humidity;
     windSpeed.textContent = todayData.forecast.windspeed;
     uvIndex.textContent = todayData.forecast.uvindex;
