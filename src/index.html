@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/html" href="./mock.css" />
+    <link rel="stylesheet" type="text/html" href="./style.css" />
     <title>wthhr.app</title>
   </head>
   <body>
@@ -16,54 +16,100 @@
         </div>
         <div class="header-right">
           <div class="search-container">
-            <form id="form">
+            <form action="/" id="form">
               <label for="city"></label>
               <input type="text" name="city" id="city" placeholder="Search" />
             </form>
           </div>
-          <button class="temp-unit btn">Fahrenheit</button>
+          <button class="temp-unit btn">Celcius</button>
         </div>
       </header>
       <main class="main-container hidden">
         <section class="location">
-          <div class="location-container">
-            <span class="city"></span>
-            <span class="date"></span>
-          </div>
+          <span class="city"></span>
+          <span class="country"></span>
         </section>
-        <section class="forecast">
-          <div class="forecast-left">
-            <section class="main-info">
-              <img alt="" class="icon" />
-              <span class="condition"></span>
-            </section>
-            <section class="details">
-              <div class="temp-container">
-                <span class="real-temp"></span>
-                <div class="btn-temp-container">
-                  <button data-temp-type="temp" class="btn">Real</button>
-                  <button data-temp-type="tempmin" class="btn">Min</button>
-                  <button data-temp-type="tempmax" class="btn">Max</button>
+        <div class="forecast-container">
+          <section class="today-forecast">
+            <div class="info">
+              <div class="general">
+                <img
+                  alt=""
+                  class="icon"
+                />
+                <span class="condition">Clear</span>
+              </div>
+              <div class="details">
+                <div class="temp-container">
+                  <span class="temp"></span>
+                  <div class="btn-temp-container">
+                    <button class="btn-temp btn real">Real</button>
+                    <button class="btn-temp btn min">Min</button>
+                    <button class="btn-temp btn max">Max</button>
+                  </div>
+                </div>
+                <div class="others">
+                  <div class="other-item">
+                    <span class="label humidity">Humidity</span>
+                    <span class="value"></span>
+                  </div>
+                  <div class="other-item">
+                    <span class="label wind-speed">Wind speed</span>
+                    <span class="value"></span>
+                  </div>
+                  <div class="other-item">
+                    <span class="label uv-index">UV Index</span
+                    ><span class="value"></span>
+                  </div>
                 </div>
               </div>
-              <div class="other-container">
-                <div class="other-item">
-                  <span class="label">Humidity</span>
-                  <span class="value humidity"></span>
-                </div>
-                <div class="other-item">
-                  <span class="label">Wind speed</span>
-                  <span class="value wind-speed"></span>
-                </div>
-                <div class="other-item">
-                  <span class="label">UV Index</span
-                  ><span class="value uv-index"></span>
-                </div>
+            </div>
+          </section>
+          <!-- <section class="upcoming-forecast">
+            <div class="forecast-row">
+              <div class="row-left">
+                <img
+                  src="../src/assets/icons/clear-day.svg"
+                  alt=""
+                  class="upcoming-forecast-icon"
+                />
+                <span class="date">30/7/2024</span>
+                <span class="condition">Sunny as fuck</span>
               </div>
-            </section>
-          </div>
-          <div class="forecast-right"></div>
-        </section>
+              <div class="row-right">
+                <span class="temp">20</span>
+              </div>
+            </div>
+            <div class="forecast-row">
+              <div class="row-left">
+                <img
+                  src="../src/assets/icons/clear-day.svg"
+                  alt=""
+                  class="upcoming-forecast-icon"
+                />
+                <span class="date">30/7/2024</span>
+                <span class="condition">Sunny as fuck</span>
+              </div>
+              <div class="row-right">
+                <span class="temp">20</span>
+              </div>
+            </div>
+            <div class="forecast-row">
+              <div class="row-left">
+                <img
+                  src="../src/assets/icons/clear-day.svg"
+                  alt=""
+                  class="upcoming-forecast-icon"
+                />
+                <span class="date">30/7/2024</span>
+                <span class="condition">Sunny as fuck</span>
+              </div>
+              <div class="row-right">
+                <span class="temp">20</span>
+              </div>
+            </div>
+          </section> -->
+        </div>
       </main>
     </div>
   </body>
