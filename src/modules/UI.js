@@ -15,7 +15,8 @@ export default class UI {
   async updateWeather(city) {
     try {
       const data = await this.fetcher.fetchWeatherData(city);
-      this.weatherData.setTodayData(data);
+      this.weatherData.setCity(data)
+      this.weatherData.setTodayForecast(data);
       this.updateUI();
     } catch (error) {
       alert(error.message);
@@ -39,11 +40,12 @@ export default class UI {
   }
 
   updateUI() {
-    const todayData = this.weatherData.getTodayData();
-    this.loadIcon(todayData);
+    const todayForecast = this.weatherData.getTodayForecast();
+    const city = this.weatherData.getCity();
+    this.loadIcon(todayForecast);
 
     const mainContainer = document.querySelector('.main-container');
-    const city = document.querySelector('.city');
+    const cityText = document.querySelector('.city');
     const condition = document.querySelector('.condition');
     const temp = document.querySelector('.temp');
     const humidity = document.querySelector('.humidity + .value');
@@ -52,7 +54,7 @@ export default class UI {
 
     const currentTempUnit = document.querySelector('.temp-unit');
     const tempValue = +convertTemperature(
-      todayData.forecast.temp,
+      todayForecast.forecast.temp,
       this.isFahrenheit
     );
     const unit = this.isFahrenheit ? 'F' : 'C';
@@ -60,11 +62,11 @@ export default class UI {
     mainContainer.classList.remove('hidden');
     currentTempUnit.textContent = this.isFahrenheit ? 'Fahrenheit' : 'Celcius';
 
-    city.textContent = todayData.city;
-    condition.textContent = todayData.forecast.conditions;
+    cityText.textContent = city;
+    condition.textContent = todayForecast.forecast.conditions;
     temp.textContent = `${Math.round(tempValue)}°${unit}`;
-    humidity.textContent = todayData.forecast.humidity;
-    windSpeed.textContent = todayData.forecast.windspeed;
-    uvIndex.textContent = todayData.forecast.uvindex;
+    humidity.textContent = todayForecast.forecast.humidity;
+    windSpeed.textContent = todayForecast.forecast.windspeed;
+    uvIndex.textContent = todayForecast.forecast.uvindex;
   }
 }
