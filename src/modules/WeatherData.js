@@ -1,15 +1,24 @@
 export default class WeatherData {
   constructor() {
-    this.todayData = null;
+    this.todayForecast = null;
+    this.city = null;
   }
 
-  getTodayData() {
-    return this.todayData;
+  getCity() {
+    return this.city;
   }
 
-  setTodayData(data) {
+  getTodayForecast() {
+    return this.todayForecast;
+  }
+
+  setCity(data) {
     const city = data.address;
+    this.city = city;
+  }
+
+  setTodayForecast(data) {
     const forecast = data.days[0];
-    this.todayData = { city, forecast };
+    this.todayForecast = { forecast };
   }
 }
