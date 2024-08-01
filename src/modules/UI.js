@@ -1,4 +1,3 @@
-// TODO: render icons in upcoming forecast
 // TODO: toggle temp change in forecast-row too
 
 import Fetcher from './Fetcher';
@@ -16,7 +15,7 @@ export default class UI {
     this.currentTempType = 'temp';
     this.isFahrenheit = true;
   }
-
+  
   async updateWeather(city) {
     try {
       const data = await this.fetcher.fetchWeatherData(city);
@@ -37,16 +36,6 @@ export default class UI {
     currentUnit.textContent = this.isFahrenheit ? 'Fahrenheit' : 'Celcius';
     this.isFahrenheit = !this.isFahrenheit;
     this.updateUI();
-  }
-
-  loadIcon(data, className = 'icon') {
-    return `
-      <img
-        src="${icons[data.icon]}"
-        alt="${icons[data.icon]}"
-        class="${className}"
-      />
-    `;
   }
 
   updateUI() {
@@ -74,7 +63,11 @@ export default class UI {
       </div>
       <div class="info">
         <div class="general">
-        ${this.loadIcon(todayForecast)}
+        <img
+          src="${icons[todayForecast.icon]}"
+          alt="${icons[todayForecast.icon]}"
+          class="icon"
+        />
         <span class="condition">${todayForecast.conditions}</span>
         </div>
         <div class="details">
@@ -110,11 +103,17 @@ export default class UI {
   renderUpcomingForecast(data) {
     const upcomingForecastContainer =
       document.querySelector('.upcoming-forecast');
+    upcomingForecastContainer.innerHTML = '';
 
-    for (const { datetime, temp, conditions } of data) {
+    for (const { icon, datetime, conditions, temp } of data) {
       const forecastRow = `
           <div class="forecast-row">
             <div class="row-left">
+              <img
+                src="${icons[icon]}"
+                alt="${icons[icon]}"
+                class="upcoming-forecast-icon"
+              />
               <span class="date">${datetime}</span>
               <span class="condition">${conditions}</span>
             </div>
