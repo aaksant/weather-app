@@ -1,5 +1,3 @@
-// TODO: toggle temp change in forecast-row too
-
 import Fetcher from './Fetcher';
 import WeatherData from './WeatherData';
 import Handler from './Handler';
