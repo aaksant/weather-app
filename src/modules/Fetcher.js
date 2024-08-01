@@ -5,13 +5,13 @@ export default class Fetcher {
     try {
       const response = await fetch(url, { mode: 'cors' });
       if (!response.ok) {
-        throw new Error('Invalid country name.');
+        throw new Error(`City ${city} not found`);
       }
-      
+
       return await response.json();
     } catch (error) {
-      console.log(error);
-      throw error;
+      alert(error.message);
+      return null;
     }
   }
 }
