@@ -15,7 +15,7 @@ export default class UI {
     this.currentTempType = 'temp';
     this.isFahrenheit = true;
   }
-  
+
   async updateWeather(city) {
     try {
       const data = await this.fetcher.fetchWeatherData(city);
@@ -106,6 +106,8 @@ export default class UI {
     upcomingForecastContainer.innerHTML = '';
 
     for (const { icon, datetime, conditions, temp } of data) {
+      const unit = this.isFahrenheit ? 'F' : 'C';
+      const tempValue = convertTemperature(temp, this.isFahrenheit);
       const forecastRow = `
           <div class="forecast-row">
             <div class="row-left">
@@ -118,7 +120,7 @@ export default class UI {
               <span class="condition">${conditions}</span>
             </div>
             <div class="row-right">
-              <span class="temp">${temp}</span>
+              <span class="temp">${Math.round(tempValue)}°${unit}</span>
             </div>
           </div>
         `;
