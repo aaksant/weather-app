@@ -1,4 +1,4 @@
-// TODO: render whole week of upcoming forecast
+// TODO: render icons in upcoming forecast
 // TODO: toggle temp change in forecast-row too
 
 import Fetcher from './Fetcher';
@@ -52,7 +52,7 @@ export default class UI {
   updateUI() {
     const mainContainer = document.querySelector('.main-container');
     const todayForecast = this.weatherData.getTodayForecast();
-    const upcomingForecast = this.weatherData.getUpcomingForecast()[0];
+    const upcomingForecast = this.weatherData.getUpcomingForecast();
     const city = this.weatherData.getCity();
 
     mainContainer.classList.remove('hidden');
@@ -67,7 +67,6 @@ export default class UI {
       todayForecast[this.currentTempType],
       this.isFahrenheit
     );
-    todayForecastContainer.innerHTML = '';
 
     const html = `
       <div class="location">
@@ -111,21 +110,21 @@ export default class UI {
   renderUpcomingForecast(data) {
     const upcomingForecastContainer =
       document.querySelector('.upcoming-forecast');
-    upcomingForecastContainer.innerHTML = '';
 
-    const forecastRow = `
-      <div class="forecast-row">
-        <div class="row-left">
-          ${this.loadIcon(data, 'upcoming-forecast-icon')}
-          <span class="date">${data.datetime}</span>
-          <span class="condition">${data.description.slice(0, -1)}</span>
-        </div>
-        <div class="row-right">
-          <span class="temp">${data.temp}</span>
-        </div>
-      </div>
-    `;
+    for (const { datetime, temp, conditions } of data) {
+      const forecastRow = `
+          <div class="forecast-row">
+            <div class="row-left">
+              <span class="date">${datetime}</span>
+              <span class="condition">${conditions}</span>
+            </div>
+            <div class="row-right">
+              <span class="temp">${temp}</span>
+            </div>
+          </div>
+        `;
 
-    upcomingForecastContainer.innerHTML = forecastRow;
+      upcomingForecastContainer.insertAdjacentHTML('beforeend', forecastRow);
+    }
   }
 }
