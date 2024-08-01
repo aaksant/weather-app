@@ -24,7 +24,7 @@ export default class UI {
 
       this.updateUI();
     } catch (error) {
-      alert(error.message);
+      return;
     }
   }
 
