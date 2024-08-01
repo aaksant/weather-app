@@ -29,6 +29,10 @@ body {
   gap: 16px;
 }
 
+.temp-unit {
+  width: 100px;
+}
+
 #form input#city {
   padding: 8px;
   outline: none;
