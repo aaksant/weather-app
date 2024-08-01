@@ -1,8 +1,12 @@
 :root {
   box-sizing: border-box;
-  --border-light: rgb(209, 213, 219);
-  --border-medium: #ddd;
-
+  --border-light: #bae6fd;
+  --border-medium: #60a5fa;
+  --primary-blue: #2563eb;
+  --light-blue: #dbeafe;
+  --dark-blue: #1e40af;
+  --text-dark: #1e293b;
+  --text-light: #f8fafc;
 }
 
 ::before,
@@ -16,21 +20,43 @@ body {
     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   padding: 0;
   margin: 0 2rem;
+  background-color: var(--light-blue);
+  color: var(--text-dark);
 }
 
+a {
+  text-decoration: none;
+  color: var(--text-light);
+}
+
+.wrapper {
+  margin: 0 auto;
+  padding: 2rem;
+}
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: var(--primary-blue);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.header-left .logo {
+  color: var(--text-light);
+  margin: 0;
 }
 
 .header-right {
   display: flex;
   gap: 16px;
+  align-items: center;
 }
 
 .temp-unit {
   width: 100px;
+  color: var(--text-light);
 }
 
 #form input#city {
@@ -40,11 +66,11 @@ body {
   border-radius: 0.5rem;
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 48px;
+.main-container {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
 }
 
 .today-forecast {
@@ -115,7 +141,11 @@ body {
   font-weight: 600;
 }
 
-.btn:hover {
+.temp-unit:hover {
+  background-color: var(--dark-blue);
+}
+
+.today-forecast .btn:hover {
   background-color: #f3f4f6;
 }
 
@@ -137,7 +167,7 @@ body {
 .other-item {
   display: flex;
   align-items: center;
-  border: 1px solid ;
+  border: 1px solid;
   border-radius: 4px;
   overflow: hidden;
 }
@@ -180,6 +210,24 @@ body {
   margin-bottom: 24px;
   padding: 10px;
   border-bottom: 1px solid var(--border-medium);
+}
+
+.forecast-row:last-child {
+  margin-bottom: 0;
+}
+
+.forecast-row .date {
+  font-weight: bold;
+  color: var(--dark-blue);
+}
+
+.forecast-row .condition {
+  color: var(--text-dark);
+}
+
+.forecast-row .temp {
+  font-weight: bold;
+  color: var(--primary-blue);
 }
 
 .forecast-row:last-child {
