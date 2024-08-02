@@ -3,6 +3,7 @@ import WeatherData from './WeatherData';
 import Handler from './Handler';
 import icons from './iconLoader';
 import { convertTemperature, convertSpeed } from './utils';
+import { isTomorrow } from 'date-fns';
 
 export default class UI {
   constructor() {
@@ -147,7 +148,9 @@ export default class UI {
                 alt="${icons[icon]}"
                 class="upcoming-forecast-icon"
               />
-              <span class="date">${datetime}</span>
+              <span class="date">${
+                isTomorrow(datetime) ? 'Tomorrow' : datetime
+              }</span>
               <span class="condition">${conditions}</span>
             </div>
             <div class="row-right">
