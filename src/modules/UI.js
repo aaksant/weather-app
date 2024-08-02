@@ -36,6 +36,11 @@ export default class UI {
     this.updateUI();
   }
 
+  setTemperatureType(type) { 
+    this.currentTempType = type;
+    this.updateUI();
+  }
+
   updateUI() {
     const mainContainer = document.querySelector('.main-container');
     const todayForecast = this.weatherData.getTodayForecast();
@@ -72,9 +77,15 @@ export default class UI {
           <div class="temp-container">
             <span class="temp">${Math.round(tempValue)}°${unit}</span>
             <div class="btn-temp-container">
-              <button class="btn-temp btn real">Real</button>
-              <button class="btn-temp btn min">Min</button>
-              <button class="btn-temp btn max">Max</button>
+              <button class="btn-temp btn ${
+                this.currentTempType === 'temp' ? 'active' : ''
+              }" data-temp-type="temp">Real</button>
+              <button class="btn-temp btn ${
+                this.currentTempType === 'tempmin' ? 'active' : ''
+              }" data-temp-type="tempmin">Min</button>
+              <button class="btn-temp btn ${
+                this.currentTempType === 'tempmax' ? 'active' : ''
+              }" data-temp-type="tempmax">Max</button>
             </div>
           </div>
           <div class="others">
@@ -96,6 +107,13 @@ export default class UI {
     `;
 
     todayForecastContainer.innerHTML = html;
+
+    todayForecastContainer.querySelectorAll('.btn-temp').forEach(button => {
+      button.addEventListener('click', () => {
+        this.setTemperatureType(button.dataset.tempType);
+        console.log(this.currentTempType);
+      });
+    });
   }
 
   renderUpcomingForecast(data) {
