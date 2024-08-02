@@ -3,6 +3,7 @@ export default class Handler {
     this.ui = ui;
     this.handleInput();
     this.handleTemperatureUnitChange();
+    this.handleTemperatureTypeChange();
   }
 
   handleInput() {
@@ -22,6 +23,17 @@ export default class Handler {
     tempToggle.addEventListener('click', () => {
       if (mainContainer.classList.contains('hidden')) return;
       this.ui.changeTemperatureUnit();
+    });
+  }
+
+  handleTemperatureTypeChange() {
+    const mainContainer = document.querySelector('.main-container');
+
+    mainContainer.addEventListener('click', e => {
+      const button = e.target.closest('.btn-temp');
+      if (button) {
+        this.ui.setTemperatureType(button.dataset.tempType);
+      }
     });
   }
 }

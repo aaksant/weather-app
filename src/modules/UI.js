@@ -36,7 +36,7 @@ export default class UI {
     this.updateUI();
   }
 
-  setTemperatureType(type) { 
+  setTemperatureType(type) {
     this.currentTempType = type;
     this.updateUI();
   }
@@ -107,13 +107,6 @@ export default class UI {
     `;
 
     todayForecastContainer.innerHTML = html;
-
-    todayForecastContainer.querySelectorAll('.btn-temp').forEach(button => {
-      button.addEventListener('click', () => {
-        this.setTemperatureType(button.dataset.tempType);
-        console.log(this.currentTempType);
-      });
-    });
   }
 
   renderUpcomingForecast(data) {
