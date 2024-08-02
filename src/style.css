@@ -33,6 +33,7 @@ a {
   margin: 0 auto;
   padding: 2rem;
 }
+
 .header {
   display: flex;
   align-items: center;
@@ -78,6 +79,7 @@ a {
   flex-direction: column;
   align-items: center;
   gap: 24px;
+  margin-bottom: 56px;
 }
 
 .location {
@@ -130,6 +132,10 @@ a {
   font-size: 5rem;
 }
 
+.active {
+  color: #06f;
+}
+
 .btn {
   background-color: transparent;
   border: 1px solid rgb(209, 213, 219);
@@ -167,7 +173,7 @@ a {
 .other-item {
   display: flex;
   align-items: center;
-  border: 1px solid;
+  border: 1px solid var(--border-light);
   border-radius: 4px;
   overflow: hidden;
 }
@@ -200,7 +206,6 @@ a {
   padding: 24px;
   max-width: 600px;
   width: 100%;
-  margin-bottom: 24px;
 }
 
 .forecast-row {
