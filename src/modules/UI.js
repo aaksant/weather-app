@@ -2,7 +2,7 @@ import Fetcher from './Fetcher';
 import WeatherData from './WeatherData';
 import Handler from './Handler';
 import icons from './iconLoader';
-import { convertTemperature } from './utils';
+import { convertTemperature, convertSpeed } from './utils';
 
 export default class UI {
   constructor() {
@@ -12,6 +12,7 @@ export default class UI {
 
     this.currentTempType = 'temp';
     this.isFahrenheit = true;
+    this.isMph = true;
   }
 
   async updateWeather(city) {
@@ -29,14 +30,24 @@ export default class UI {
   }
 
   changeTemperatureUnit() {
-    const currentUnit = document.querySelector('.temp-unit');
+    const currentTemperatureUnit = document.querySelector('.temp-unit');
 
-    currentUnit.textContent = this.isFahrenheit ? 'Fahrenheit' : 'Celcius';
+    currentTemperatureUnit.textContent = this.isFahrenheit
+      ? 'Fahrenheit'
+      : 'Celcius';
     this.isFahrenheit = !this.isFahrenheit;
     this.updateUI();
   }
 
-  setTemperatureType(type) {
+  changeSpeedUnit() {
+    const currentSpeedUnit = document.querySelector('.speed-unit');
+
+    currentSpeedUnit.textContent = this.isMph ? 'Mph' : 'Km/h';
+    this.isMph = !this.isMph;
+    this.updateUI();
+  }
+
+  setTemperatureFeel(type) {
     this.currentTempType = type;
     this.updateUI();
   }
@@ -54,7 +65,9 @@ export default class UI {
 
   renderTodayForecast(todayForecast, city) {
     const todayForecastContainer = document.querySelector('.today-forecast');
-    const unit = this.isFahrenheit ? 'F' : 'C';
+    const temperatureUnit = this.isFahrenheit ? 'F' : 'C';
+    const speedUnit = this.isMph ? 'Mph' : 'Km/h';
+
     const tempValue = convertTemperature(
       todayForecast[this.currentTempType],
       this.isFahrenheit
@@ -75,7 +88,9 @@ export default class UI {
         </div>
         <div class="details">
           <div class="temp-container">
-            <span class="temp">${Math.round(tempValue)}°${unit}</span>
+            <span class="temp">${Math.round(
+              tempValue
+            )}°${temperatureUnit}</span>
             <div class="btn-temp-container">
               <button class="btn-temp btn ${
                 this.currentTempType === 'temp' ? 'active' : ''
@@ -95,7 +110,14 @@ export default class UI {
             </div>
             <div class="other-item">
               <span class="label wind-speed">Wind speed</span>
-              <span class="value">${todayForecast.windspeed}</span>
+              <span class="value">${convertSpeed(
+                todayForecast.windspeed,
+                this.isMph
+              )} ${speedUnit}</span>
+            </div>
+            <div class="other-item">
+              <span class="label uv-index">Wind direction</span
+              ><span class="value">${todayForecast.winddir}°</span>
             </div>
             <div class="other-item">
               <span class="label uv-index">UV Index</span

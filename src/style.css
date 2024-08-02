@@ -55,7 +55,7 @@ a {
   align-items: center;
 }
 
-.temp-unit {
+.header-right .btn {
   width: 100px;
   color: var(--text-light);
 }
