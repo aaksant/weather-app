@@ -60,6 +60,10 @@ a {
   color: var(--text-light);
 }
 
+.header-right .btn:hover {
+  background-color: var(--dark-blue);
+}
+
 #form input#city {
   padding: 8px;
   outline: none;
@@ -145,10 +149,6 @@ a {
   text-align: center;
   cursor: pointer;
   font-weight: 600;
-}
-
-.temp-unit:hover {
-  background-color: var(--dark-blue);
 }
 
 .today-forecast .btn:hover {
